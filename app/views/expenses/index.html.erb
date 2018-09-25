@@ -21,11 +21,11 @@
         <div class="col-md-12">
           <a href="#" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
           <h4 class="dropdown pull-right">
-            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">April 2016 <span class="caret"></span></button>
+            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">All Months <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu">
-              <li role="presentation"><a href="#">April 2016</a></li>
-              <li role="presentation"><a href="#">March 2016</a></li>
-              <!-- more months -->
+            <%@months.each do |month|%>
+              <li role="presentation"><a href="#"><%=month.strftime("%B")%> <%=month.year%></a></li>
+            <%end%>            
             </ul>
           </h4>
         </div>
