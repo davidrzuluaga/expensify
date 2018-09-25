@@ -1,33 +1,35 @@
  <table id="expenses-table" class="table table-hover" style="margin-top: 20px;">
         <thead>
           <tr>
-            <th class="text-center">Día</th>
-            <th>Concepto</th>
-            <th class="text-right">Categoría</th>
-            <th class="text-right">Valor</th>
+            <th class="text-center">Day</th>
+            <th>Concept</th>
+            <th class="text-right">Category</th>
+            <th class="text-right">Amount</th>
           </tr>
         </thead>
         <tbody>
+        <%@expense.each do |exp|%>
           <tr>
             <td class="date">
-              <div class="day">24</div>
-              <div class="month">Apr</div>
+              <div class="day"><%=exp.date.day%></div>
+              <div class="month"><%=exp.date.strftime("%B")%></div>
             </td>
             <td>
               <div>
-                <span class="type">Purchase</span>
+                <span class="type"><%=exp.type.name%></span>
               </div>
               <div>
-                <span class="concept">Example concept</span>
+                <span class="concept"><%=exp.concept%></span>
               </div>
             </td>
-            <td class="category text-right">Restauratns</td>
+            <td class="category text-right"><%=exp.category.name%></td>
             <td class="text-right" style="width: 170px;">
-              <div class="amount">$1,000,000</div>
+              <div class="amount"><%=number_to_currency(exp.amount)%></div>
               <div class="actions">
                 <a href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                 <a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a>
             </td>
           </tr>
+          <%end%>
         </tbody>
       </table>
