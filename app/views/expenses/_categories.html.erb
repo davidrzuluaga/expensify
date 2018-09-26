@@ -2,14 +2,14 @@
   <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
   <div class="list-group filter-type">
     <%@type.each do |type|%>
-      <a href="#" class="list-group-item"><%=type.name%></a>
+      <a href="#" class="list-group-item <%="active" if params[:type].to_i == type.id%>"><%=type.name%></a>
     <%end%>
   </div>
   
   <h4 class="filter-header">Category <span>Choose to filter</span></h4>
   <div class="list-group filter-type">
   <%@category.each do |cat|%>
-      <a href="#" class="list-group-item"><%=cat.name%></a>
+      <a href="/expenses?category=<%=cat.id%>" class="list-group-item <%="active" if params[:category].to_i == cat.id%>"><%=cat.name%></a>
     <%end%>
   </div>
 </div>
