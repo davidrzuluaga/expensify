@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="total-box col-md-3">
-      $200,000
+      <%=number_to_currency(@todayexpenses)%>
       <span>Today</span>
     </div>
     <div class="total-box col-md-3">
-      $140,000
+      <%=number_to_currency(@yesterdayexpenses)%>
       <span>Yesterday</span>
     </div>
     <div class="total-box col-md-3">
-      $7,500,000
+      <%=number_to_currency(@thismonthexpenses)%>
       <span>This Month</span>
     </div>
     <div class="total-box col-md-3">
-      $6,200,000
+      <%=number_to_currency(@lastmonthexpenses)%>      
       <span>Last Month</span>
     </div>
   </div>

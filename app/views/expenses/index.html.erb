@@ -4,15 +4,15 @@
     <div class="col-md-9 index-data">
       <div class="row" style="margin-top: 10px;">
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value">$2,500,000</div>
+          <div class="summary-value"><%=number_to_currency(@total)%></div>
           <div class="summary-label">Total</div>
         </diV>
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value">2</div>
+          <div class="summary-value"><%=@expenses.count%></div>
           <div class="summary-label">Transactions</div>
         </div>
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value">$1,000,000</div>
+          <div class="summary-value"><%=number_to_currency(@total/@expenses.count)%></div>
           <div class="summary-label">Average</div>
         </div>
       </div>
@@ -21,7 +21,7 @@
         <div class="col-md-12">
           <a href="#" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
           <h4 class="dropdown pull-right">
-            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">All Months <span class="caret"></span></button>
+            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown"><%=@currentmonth == "" ? "All Months" : @currentmonth.strftime("%B %Y")%> <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu">
             <%@months.each do |month|%>
               <li role="presentation"><a href="#"><%=month.strftime("%B")%> <%=month.year%></a></li>
