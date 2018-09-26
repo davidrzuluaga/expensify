@@ -10,7 +10,7 @@ class ExpensesController < ApplicationController
     @months = @dates.uniq.sort
     
     if params[:month].present?
-      dateparams = params[:month].split(",")
+      dateparams = params[:month].split("-")
       month = Date.new(dateparams[0].to_i, dateparams[1].to_i, dateparams[2].to_i)
       @currentmonth = month
     else

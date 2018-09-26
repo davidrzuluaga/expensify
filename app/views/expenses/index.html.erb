@@ -24,7 +24,7 @@
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown"><%=@currentmonth == "" ? "All Months" : @currentmonth.strftime("%B %Y")%> <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu">
             <%@months.each do |month|%>
-              <li role="presentation"><a href="#"><%=month.strftime("%B")%> <%=month.year%></a></li>
+              <li role="presentation"><%= link_to "#{month.strftime("%B")} #{month.year}", request.params.merge(month: month)%></li>
             <%end%>            
             </ul>
           </h4>
