@@ -2,14 +2,14 @@
   <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
   <div class="list-group filter-type">
     <%@type.each do |type|%>
-      <%= link_to type.name, request.params.merge(type: type.id), class:"list-group-item #{'active' if params[:type].to_i == type.id}"%>
+      <%= link_to type.name, (params[:type].to_i == type.id ? request.params.merge(type: "") : request.params.merge(type: type.id)), class:"list-group-item #{'active' if params[:type].to_i == type.id}"%>
     <%end%>
   </div>
   
   <h4 class="filter-header">Category <span>Choose to filter</span></h4>
   <div class="list-group filter-type">
   <%@category.each do |cat|%>
-    <%= link_to cat.name, request.params.merge(category: cat.id), class:"list-group-item #{'active' if params[:category].to_i == cat.id}"%>
+    <%= link_to cat.name, (params[:category].to_i == cat.id ? request.params.merge(category: "") : request.params.merge(category: cat.id)), class:"list-group-item #{'active' if params[:category].to_i == cat.id}"%>
   <%end%>
   </div>
 </div>

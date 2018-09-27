@@ -12,20 +12,22 @@
           <div class="summary-label">Transactions</div>
         </div>
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value"><%=number_to_currency(@total/@expenses.count)%></div>
+          <div class="summary-value"><%=number_to_currency((@total/@expenses.count).nan? ? 0.to_f : @total/@expenses.count)%></div>
           <div class="summary-label">Average</div>
         </div>
-      </div>
+      </div>  
 
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
           <a href="#" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown"><%=@currentmonth == "" ? "All Months" : @currentmonth.strftime("%B %Y")%> <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
+            <ul class="dropdown-menu" role="menu">                        
+              <li role="presentation"><%= link_to "Show All", request.params.merge(month: "")%></li>
+              <li role="separator" class="divider"></li>
             <%@months.each do |month|%>
               <li role="presentation"><%= link_to "#{month.strftime("%B")} #{month.year}", request.params.merge(month: month)%></li>
-            <%end%>            
+            <%end%>
             </ul>
           </h4>
         </div>
