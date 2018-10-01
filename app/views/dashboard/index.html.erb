@@ -23,7 +23,9 @@
       <div class="panel panel-default">
         <div class="panel-heading">Last 6 Months</div>
         <div class="panel-body">
-          <div id="expenses-chart" style="height: 250px;"></div>
+          <div id="expenses-chart" style="height: 250px;">
+          
+          </div>
         </div>
       </div>
     </div>
@@ -31,7 +33,9 @@
       <div class="panel panel-default">
         <div class="panel-heading">Per Day</div>
         <div class="panel-body">
-          <div id="daily-expenses-chart" style="height: 250px;"></div>
+          <div id="daily-expenses-chart" style="height: 250px;">
+            <%= column_chart Expense.group_by_day_of_week(:date, format: "%a").count %>
+          </div>
         </div>
       </div>
     </div>
