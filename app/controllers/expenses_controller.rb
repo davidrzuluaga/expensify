@@ -23,4 +23,22 @@ class ExpensesController < ApplicationController
     @expenses = Expense.where("category_id LIKE ? AND type_id LIKE ? AND date >= ? AND date <= ?", "%#{params[:category]}%", "%#{params[:type]}%", "#{month.at_beginning_of_month}", "#{params[:month] == "" ? Date.today.at_end_of_month : month.at_end_of_month}").order("date DESC")
     @total = @expenses.sum(:amount)
   end
+
+  def new
+    @expense = Expense.new
+  end
+
+  def create
+    @expense = Expense.create(expense_params)
+    # binding.pry
+    respond_to do |format|
+      format.html { redirect_to expenses_path }
+    end
+  end
+
+private
+
+  def expense_params
+    params.require(:expense).permit(:date, :concept, :amount, :category_id, :type_id)
+  end
 end

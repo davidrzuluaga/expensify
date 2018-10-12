@@ -19,7 +19,7 @@
 
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
-          <a href="#" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
+          <%= link_to "<span class='glyphicon glyphicon-plus'></span> New Expense</a>".html_safe, new_expense_path, remote: true, class: "btn btn-success pull-left" %>
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown"><%=@currentmonth == "" ? "All Months" : @currentmonth.strftime("%B %Y")%> <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu">                        
