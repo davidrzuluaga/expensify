@@ -7,26 +7,32 @@
         </div>
       <%= form_for @expense, remote: true do |f| %>
         <div class="modal-body">
-          <div class="alert alert-danger" role="alert" style="display: none;"></div>
-          <div class="form-group">
-            <%= f.text_field :type_id, class: "form-control input-lg", placeholder: "Type" %>
-          </div>
-          <div class="form-group">
-            <%= f.text_field :date, class: "form-control input-lg", placeholder: "Date" %>
-          </div>
-          <div class="form-group">
-            <%= f.text_field :concept, class: "form-control input-lg", placeholder: "Concept" %>
-          </div>
-          <div class="form-group">
-            <%= f.text_field :category_id, class: "form-control input-lg", placeholder: "Category" %>
-          </div>
-          <div class="form-group">
-            <%= f.text_field :amount, class: "form-control input-lg", placeholder: "Amount" %>
+          <div class="row">
+            <div class="alert alert-danger" role="alert" style="display: none;"></div>
+            <div class="col-xs-6">
+              <%= f.label :type_id, "Type" %>            
+              <%= f.text_field :type_id, class: "form-control input", placeholder: "Type" %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.label :date, "Date" %>
+              <%= f.text_field :date, class: "form-control input", placeholder: "Date" %>
+            </div>
+            <div class="col-xs-12">
+              <%= f.label :concept, "Concept" %>
+              <%= f.text_field :concept, class: "form-control input", placeholder: "Concept" %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.label :category_id, "Category" %>
+              <%= f.text_field :category_id, class: "form-control input", placeholder: "Category" %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.label :amount, "Amount" %>
+              <%= f.text_field :amount, class: "form-control input", placeholder: "Amount" %>
+            </div>
           </div>
         </div>
-
         <div class="modal-footer">
-          <%= f.submit class: "btn btn-primary btn-lg btn-block" %>
+          <%= f.submit class: "btn btn-primary btn " %>
         </div>
       <% end %>
 
