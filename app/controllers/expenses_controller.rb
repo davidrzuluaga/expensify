@@ -26,11 +26,11 @@ class ExpensesController < ApplicationController
 
   def new
     @expense = Expense.new
+    # binding.pry
   end
 
   def create
     @expense = Expense.create(expense_params)
-    # binding.pry
     respond_to do |format|
       format.html { redirect_to expenses_path }
     end
