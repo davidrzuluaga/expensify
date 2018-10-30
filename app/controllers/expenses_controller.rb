@@ -26,16 +26,27 @@ class ExpensesController < ApplicationController
 
   def new
     @expense = Expense.new
-    # binding.pry
   end
-
+  
   def create
     @expense = Expense.create(expense_params)
     respond_to do |format|
       format.html { redirect_to expenses_path }
     end
   end
+  
+  def destroy
+    @expense = Expense.destroy(params[:id])
+  end
 
+  def edit
+    @expense = Expense.find(params[:id])
+  end
+
+  def update
+    @expense = Expense.update(params[:id], expense_params)
+  end
+  
 private
 
   def expense_params

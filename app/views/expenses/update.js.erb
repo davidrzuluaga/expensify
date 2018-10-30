@@ -1,0 +1,7 @@
+<% if @expense.errors.empty? %>
+  $('table tbody tr.<%= @expense.id %>').replaceWith(' <%= j render "row", expense: @expense %>');
+  $('#expense-modal').modal('hide');
+<% else %>
+  // show first error
+  alert('<%= @expense.errors.full_messages[0] %>');
+<% end %>

@@ -1,0 +1,21 @@
+<tr class="<%=expense.id%>">
+  <td class="date">
+    <div class="day"><%=expense.date.day%></div>
+    <div class="month"><%=expense.date.strftime("%B")%></div>
+  </td>
+  <td>
+    <div>
+      <span class="type"><%=expense.type.name%></span>
+    </div>
+    <div>
+      <span class="concept"><%=expense.concept%></span>
+    </div>
+  </td>
+  <td class="category text-right"><%=expense.category.name%></td>
+  <td class="text-right" style="width: 170px;">
+    <div class="amount"><%=number_to_currency(expense.amount)%></div>
+    <div class="actions">
+      <%= link_to  "<span class='glyphicon glyphicon-edit'></span> Edit".html_safe, edit_expense_path(expense), remote: true %>
+      <%= link_to  "<span class='glyphicon glyphicon-trash'></span> Delete".html_safe, expense_path(expense), method: :delete, remote: true %>
+  </td>
+</tr>
