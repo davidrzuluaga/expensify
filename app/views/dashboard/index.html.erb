@@ -34,7 +34,7 @@
         <div class="panel-heading">This Month Per Day</div>
         <div class="panel-body">
           <div id="daily-expenses-chart" style="height: 300px;">
-            <%= column_chart @type %>
+            <%= column_chart charts_type_path, prefix: "$" %>
           </div>
         </div>
       </div>
@@ -47,16 +47,18 @@
         <div class="panel-heading">This Month Per Category</div>
         <div class="panel-body">
           <div id="category-chart" style="height: 300px;">
-            <%= pie_chart @category %>
+            <%= pie_chart charts_category_path, prefix: "$" %>
           </div>
         </div>
       </div>
     </div>
     <div class=" box col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">This Month vs Last Accumulated</div>
+        <div class="panel-heading">This Month vs Last - Accumulated</div>
         <div class="panel-body">
-          <div id="month-acc" style="height: 300px;"></div>
+          <div id="month-acc" style="height: 300px;">
+            <%= area_chart charts_accumulated_path, prefix: "$" %>
+          </div>
         </div>
       </div>
     </div>
