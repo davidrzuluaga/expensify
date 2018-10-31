@@ -23,18 +23,18 @@
       <div class="panel panel-default">
         <div class="panel-heading">Last 6 Months</div>
         <div class="panel-body">
-          <div id="expenses-chart" style="height: 250px;">
-          
+          <div id="expenses-chart" style="height: 300px;">
+          <%= column_chart Expense.group_by_day(:date, format: "%a").count %>
           </div>
         </div>
       </div>
     </div>
     <div class="box col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Per Day</div>
+        <div class="panel-heading">This Month Per Day</div>
         <div class="panel-body">
-          <div id="daily-expenses-chart" style="height: 250px;">
-            <%= column_chart Expense.group_by_day_of_week(:date, format: "%a").count %>
+          <div id="daily-expenses-chart" style="height: 300px;">
+            <%= column_chart @type %>
           </div>
         </div>
       </div>
@@ -44,17 +44,19 @@
   <div class="row" style="margin-top: 10px;">
     <div class="box col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Per Category</div>
+        <div class="panel-heading">This Month Per Category</div>
         <div class="panel-body">
-          <div id="category-chart" style="height: 250px;"></div>
+          <div id="category-chart" style="height: 300px;">
+            <%= pie_chart @category %>
+          </div>
         </div>
       </div>
     </div>
     <div class=" box col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Acumulado</div>
+        <div class="panel-heading">This Month vs Last Accumulated</div>
         <div class="panel-body">
-          <div id="month-acc" style="height: 250px;"></div>
+          <div id="month-acc" style="height: 300px;"></div>
         </div>
       </div>
     </div>
