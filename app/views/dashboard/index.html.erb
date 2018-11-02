@@ -24,7 +24,7 @@
         <div class="panel-heading">Last 6 Months</div>
         <div class="panel-body">
           <div id="expenses-chart" style="height: 300px;">
-          <%= column_chart Expense.group_by_day(:date, format: "%a").count %>
+            <%= column_chart charts_semester_type_path %>
           </div>
         </div>
       </div>
