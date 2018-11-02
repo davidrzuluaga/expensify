@@ -34,8 +34,20 @@
     </nav>
 
     <%= yield %>
+
+    <div class="callout" style="display: none;">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+      <div class="callout-container">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key != "success" ? "success" : key %>"><%= value %></div>
+        <% end %>
+        <p></p>
+      </div>
+    </div>
+
     <script>
-  new ProductsView();
-</script>
+      new ProductsView();
+    </script>
+
   </body>
 </html>

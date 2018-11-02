@@ -1,1 +1,9 @@
 $('table tbody tr.<%= @expense.id %>').remove();
+  $('.callout').show();
+  $('.callout p').html("<%=@successdeleted%>");
+  $(function() {
+    setTimeout(function() {
+      $('.callout').hide();
+        }, 6000);
+  });
+

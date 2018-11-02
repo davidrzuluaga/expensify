@@ -1,9 +1,15 @@
 <% if @expense.errors.empty? %>
   $('table tbody').append(' <%= j render "row", expense: @expense %>');
+  $('.callout_error').hide();
   $('#expense-modal').modal('hide');
   $('.callout').show();
-  $('.callout p').html("The purchase <%=params[:expense][:concept]%> for $<%=params[:expense][:amount]%> on <%=params[:expense][:date]%> was created successfully!");
+  $('.callout p').html("The <%=Type.find(params[:expense][:type_id]).name%>: <%=params[:expense][:concept]%> for $<%=params[:expense][:amount]%> on <%=params[:expense][:date]%> was created successfully!");
+    $(function() {
+    setTimeout(function() {
+      $('.callout').hide();
+        }, 6000);
+  });
 <% else %>
-  console.log("Error");
-  $('modalalert').html('<%= @expense.errors.full_messages %>');
+  $('.callout_error').show();
+  $('.callout_error .callout-container_error').append("<%= @expense.errors.full_messages.each { |err| '<p> #{err} </p>' } %>");
 <% end %>

@@ -26,10 +26,25 @@
   max-width: 400px;
 }
 
+.callout_error {
+  /*position: fixed;
+  top: 15%;
+  right: 5%;*/
+  margin: 5px 5px 5px 5px;
+  //max-width: 400px;
+}
+
 .callout-container {
   padding: 15px;
   background-color: rgb(222, 237, 217);
   color: rgb(119, 149, 124);
+  border-radius: 12px;
+}
+
+.callout-container_error {
+  padding: 15px;
+  background-color: rgb(237, 217, 229);
+  color: rgb(149, 119, 135);
   border-radius: 12px;
 }
 

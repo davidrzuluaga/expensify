@@ -37,6 +37,7 @@ class ExpensesController < ApplicationController
   end
   
   def destroy
+    @successdeleted = "The #{Type.find(Expense.find(params[:id]).type_id).name} #{Expense.find(params[:id]).concept} for $#{Expense.find(params[:id]).amount} on #{Expense.find(params[:id]).date} was destroyed successfully!"
     @expense = Expense.destroy(params[:id])
   end
 

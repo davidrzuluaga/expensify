@@ -1,7 +1,14 @@
 <% if @expense.errors.empty? %>
   $('table tbody tr.<%= @expense.id %>').replaceWith(' <%= j render "row", expense: @expense %>');
   $('#expense-modal').modal('hide');
+  $('.callout').show();
+  $('.callout p').html("The <%=Type.find(params[:expense][:type_id]).name%>: <%=params[:expense][:concept]%> for $<%=params[:expense][:amount]%> on <%=params[:expense][:date]%> was modified successfully!");
+  $(function() {
+    setTimeout(function() {
+      $('.callout').hide();
+        }, 6000);
+  });
 <% else %>
-  console.log("Error");
-  alert('<%= @expense.errors.full_messages[0] %>');
+  $('.callout_error').show();
+  $('.callout_error .callout-container_error').append("<%= @expense.errors.full_messages.each { |err| '<p> #{err} </p>' } %>");
 <% end %>
