@@ -1,0 +1,7 @@
+<% if @expense.errors.empty? %>
+  $('table tbody').append(' <%= j render "row", expense: @expense %>');
+  $('#expense-modal').modal('hide');
+<% else %>
+  console.log("Error");
+  $('modalalert').html('<%= @expense.errors.full_messages %>');
+<% end %>

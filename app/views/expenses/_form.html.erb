@@ -8,22 +8,28 @@
       <%= form_for @expense, remote: true do |f| %>
         <div class="modal-body">
           <div class="row">
-            <div class="alert alert-danger" role="alert" style="display: none;"></div>
+            <div class="modalalert alert-danger" role="alert" style="display: none;"></div>
             <div class="col-xs-6">
               <div class="control-group">
                 <%= f.label :type_id, "Type" %>
                 <div class="form-group">
-                  <%= f.collection_select :type_id, Type.all, :id, :name, {},  class: "form-control" %>
+                  <%= f.collection_select :type_id, Type.all, :id, :name, {}, class: "form-control"%>
                 </div>
               </div>
             </div>
             <div class="col-xs-6">
-              <%= f.label :date, "Date" %>
-              <%= f.text_field :date, class: "form-control input", placeholder: "Date" %>
+              <div class="form-date">
+                <%= f.label :date, "Date" %>
+                <%= f.text_field :date, class: "form-control input", id: "date", placeholder: "Date", value: Date.today   %>
+                <p class="help-block"></p>
+              </div>
             </div>
             <div class="col-xs-12">
-              <%= f.label :concept, "Concept" %>
-              <%= f.text_field :concept, class: "form-control input", placeholder: "Concept" %>
+              <div class="form-concept">
+                <%= f.label :concept, "Concept" %>
+                <%= f.text_field :concept, class: "form-control input", placeholder: "Concept" %>
+                <p class="help-block"></p>
+              </div>
             </div>
             <div class="col-xs-6">
               <div class="control-group">
@@ -34,8 +40,11 @@
               </div>
             </div>
             <div class="col-xs-6">
-              <%= f.label :amount, "Amount" %>
-              <%= f.text_field :amount, class: "form-control input", placeholder: "Amount" %>
+              <div class="form-amount">
+                <%= f.label :amount, "Amount" %>
+                <%= f.text_field :amount, class: "form-control input", placeholder: "Amount", value: 0 %>
+                <p class="help-block"></p>
+              </div>
             </div>
           </div>
         </div>
@@ -47,3 +56,18 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<script>
+  //$('.modal-title').on('click', function() {  
+    //$('.form-control').hide();
+    //$(this).hide();
+ /*   $('form').on('submit', function(e) {
+  e.preventDefault();
+  });*/
+   console.log("Dentro del modala");
+$('form').hide();
+//    console.log("Hola");
+  //});
+    //$('h4').hide();  
+</script>
+
