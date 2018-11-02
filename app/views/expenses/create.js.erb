@@ -1,6 +1,8 @@
 <% if @expense.errors.empty? %>
   $('table tbody').append(' <%= j render "row", expense: @expense %>');
   $('#expense-modal').modal('hide');
+  $('.callout').show();
+  $('.callout p').html("The purchase <%=params[:expense][:concept]%> for $<%=params[:expense][:amount]%> on <%=params[:expense][:date]%> was created successfully!");
 <% else %>
   console.log("Error");
   $('modalalert').html('<%= @expense.errors.full_messages %>');

@@ -17,3 +17,31 @@
   max-width: 500px;
   z-index: 1000;
 }
+
+.callout {
+  position: fixed;
+  top: 15%;
+  right: 5%;
+  margin-left: 20px;
+  max-width: 400px;
+}
+
+.callout-container {
+  padding: 15px;
+  background-color: rgb(222, 237, 217);
+  color: rgb(119, 149, 124);
+  border-radius: 12px;
+}
+
+.closebtn {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  color: rgb(59, 109, 71);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.closebtn:hover {
+  color: rgb(196, 255, 219);
+}
