@@ -4,23 +4,27 @@ class ExpensesController < ApplicationController
     @type = Type.all
     @category = Category.all
     @dates = []
-    @currentmonth = ""
-
+    
     Expense.all.each {|exp| @dates << Date.new(exp.date.year, exp.date.month, 1)}
     @months = @dates.uniq.sort.reverse
     
     if params[:month] == ""
-      month = @months.last
+      firstmonth_range = @months.last
+      lastmonth_range = @months.first
+      @currentmonth = "All Months"
     elsif !params[:month].present?
-      month = Date.today
-      @currentmonth = month
+      firstmonth_range = Date.today
+      lastmonth_range = Date.today
+      @currentmonth = Date.today.strftime("%B %Y")
     elsif params[:month].present? && params[:month] != ""
       dateparams = params[:month].split("-")
       month = Date.new(dateparams[0].to_i, dateparams[1].to_i, 1)
-      @currentmonth = month
+      firstmonth_range = month
+      lastmonth_range = month
+      @currentmonth = month.strftime("%B %Y")
     end
     
-    @expenses = Expense.where("category_id LIKE ? AND type_id LIKE ? AND date >= ? AND date <= ?", "%#{params[:category]}%", "%#{params[:type]}%", "#{month.at_beginning_of_month}", "#{params[:month] == "" ? Date.today.at_end_of_month : month.at_end_of_month}").order("date DESC")
+    @expenses = Expense.where("category_id LIKE ? AND type_id LIKE ? AND date >= ? AND date <= ?", "%#{params[:category]}%", "%#{params[:type]}%", "#{firstmonth_range.at_beginning_of_month}", "#{lastmonth_range.at_end_of_month}").order("date DESC")
     @total = @expenses.sum(:amount)
   end
 

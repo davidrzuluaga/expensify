@@ -3,7 +3,22 @@ class Api::V1::ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :update, :destroy]
 
   def index
-    @expenses = Expense.all
+    dates = []
+    Expense.all.each {|exp| dates << Date.new(exp.date.year, exp.date.month, 1)}
+    months = dates.uniq.sort.reverse
+    
+    if params[:month].present? && params[:month] != ""
+      dateparams = params[:month].split("-")
+      month = Date.new(dateparams[0].to_i, dateparams[1].to_i, 1)
+      firstmonth_range = month
+      lastmonth_range = month
+    else 
+      firstmonth_range = months.last
+      lastmonth_range = months.first
+    end
+    
+    @expenses = Expense.where("category_id LIKE ? AND type_id LIKE ? AND date >= ? AND date <= ?", "%#{params[:category]}%", "%#{params[:type]}%", "#{firstmonth_range.at_beginning_of_month}", "#{lastmonth_range.at_end_of_month}").order("date DESC")
+    
     render json: @expenses
   end
 
