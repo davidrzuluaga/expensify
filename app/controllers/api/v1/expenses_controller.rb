@@ -29,7 +29,7 @@ class Api::V1::ExpensesController < ApplicationController
   def create
     @expense = Expense.create(expense_params)   
     if @expense.save
-      render json: @expense
+      render json: @expense, status: 201
     else
       render json: { errors: @expense.errors }, status: 422
     end
