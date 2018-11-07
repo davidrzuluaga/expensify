@@ -34,10 +34,6 @@ class ExpensesController < ApplicationController
   
   def create
     @expense = Expense.create(expense_params)
-    # binding.pry
-    # respond_to do |format|
-    #   format.html { redirect_to expenses_path }
-    # end
   end
   
   def destroy
